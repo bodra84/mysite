@@ -6,8 +6,13 @@ metadata:
   labels:
     app: mysite
 spec:
-  replicas: 2
+  replicas: 4
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: mysite
@@ -18,6 +23,6 @@ spec:
     spec:
       containers:
       - name: mysite
-        image: bodra84/mysite:v1.0.0
+        image: bodra84/mysite:latest
         ports:
         - containerPort: 80
