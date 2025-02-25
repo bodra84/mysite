@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
       - name: mysite
-        image: bodra84/mysite:latest
+        image:  {{ image }}
         ports:
         - containerPort: 80
